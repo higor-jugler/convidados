@@ -1,10 +1,10 @@
-package com.endeavorsheep.convidados.ui.home
+package com.endeavorsheep.convidados.ui.guests
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class AllGuestsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
