@@ -1,9 +1,13 @@
 package com.endeavorsheep.convidados.repository
 
+import android.content.ContentValues
 import android.content.Context
+import com.endeavorsheep.convidados.repository.model.GuestModel
 
+/**
+ * Data manipulation
+ */
 class GuestRepository private constructor(context: Context) {
-
     /**
      *When this class is instantiated, the database class will be instantiated along with
      **/
@@ -20,12 +24,29 @@ class GuestRepository private constructor(context: Context) {
             return repository
         }
 
-        fun insert() {
+    }
 
-        }
+    fun insert(guest: GuestModel) {
+        val db = guestDataBase.writableDatabase
 
-        fun update() {
+        // Check for true or false whether or not there is creation in the database
+        val presence = if (guest.presence) 1 else 0
 
-        }
+        // Content Values - Will upload the information to the database
+        val values = ContentValues()
+
+        // Information for writing to the database
+        values.put("name", guest.name)
+        values.put("presence", presence)
+
+        /**
+         * id is autoincrement, database takes care of insertion
+         */
+
+        db.insert("Guest", null, values)
+    }
+
+    fun update() {
+
     }
 }
